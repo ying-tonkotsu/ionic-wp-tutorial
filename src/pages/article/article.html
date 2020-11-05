@@ -16,5 +16,6 @@
   <h2>{{post.title}}</h2>
   <p>{{post.date}}</p>
 </ion-item>
-<div padding>{{post.content}}</div>
+<!-- サニタイズをはずす -->
+<div [innerHTML] = "post.content" padding ></div>
 </ion-content>
