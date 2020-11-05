@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 // ローディングを追加
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
-import { WordpressProvaider, WordpressProvider } from '../../providers/wordpress/wordpress';
+import { WordpressProvider } from '../../providers/wordpress/wordpress';
 /**
  * Generated class for the ArticlePage page.
  *
@@ -19,7 +19,7 @@ import { WordpressProvaider, WordpressProvider } from '../../providers/wordpress
   selector: 'page-article',
   templateUrl: 'article.html',
   // プロバイダを追加
-  providers: [ WordpressProvaider ]
+  providers: [ WordpressProvider ]
 })
 export class ArticlePage {
   // 記事情報を追加
