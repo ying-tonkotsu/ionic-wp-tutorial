@@ -7,6 +7,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 // HTTP通信を行うためのHTTPClientを使えるようにする
 import { HttpClientModule } from "@angular/common/http";
 import { MyApp } from './app.component';
+import { WordpressProvider } from '../providers/wordpress/wordpress';
 // import { HomePage } from '../pages/home/home';
 
 @NgModule({
@@ -27,7 +28,8 @@ import { MyApp } from './app.component';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    WordpressProvider
   ]
 })
 export class AppModule {}

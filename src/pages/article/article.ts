@@ -1,10 +1,7 @@
 import { Component } from '@angular/core';
-// HTTP通信ができるような状態にする
-import { HttpClient } from '@angular/common/http';
 // ローディングを追加
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
-import { stringify } from '@angular/core/src/util';
-
+import { WordpressProvaider, WordpressProvider } from '../../providers/wordpress/wordpress';
 /**
  * Generated class for the ArticlePage page.
  *
@@ -21,6 +18,8 @@ import { stringify } from '@angular/core/src/util';
 @Component({
   selector: 'page-article',
   templateUrl: 'article.html',
+  // プロバイダを追加
+  providers: [ WordpressProvaider ]
 })
 export class ArticlePage {
   // 記事情報を追加
@@ -41,8 +40,8 @@ export class ArticlePage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public http: HttpClient,
-    public loadingCtrl: LoadingController
+    public loadingCtrl: LoadingController,
+    public wp: WordpressProvider
     ) {
   }
 
@@ -52,12 +51,8 @@ export class ArticlePage {
 
     const id =  this.navParams.get('id');
     // 返り値の型を事前に指定（APIのレスポンスと一致させる為）
-    this.http.get<{
-      ID: number,
-      title: string,
-      content: string,
-      date: string
-    }>('https://public-api.wordpress.com/rest/v1.1/sites/ionicjp.wordpress.com/posts/' + id)
+    // provideから呼び出し
+    this.wp.getArticle(id)
       .subscribe(data => {
         this.post = data;
         loading.dismiss();

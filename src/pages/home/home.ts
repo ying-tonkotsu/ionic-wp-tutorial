@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
-// HTTPClientとの通信に必要
-import { HttpClient } from '@angular/common/http';
 import { IonicPage, NavController, LoadingController } from 'ionic-angular';
 
+// プロバイダーとつなげる
+import { WordpressProvider } from '../../providers/wordpress/wordpress';
 
 @IonicPage()
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'home.html',
+  // プロバイダーを追加
+  providers: [ WordpressProvider ]
 })
 export class HomePage {
   // 返り値を格納するためのプロパティPostsの型定義
@@ -20,9 +22,8 @@ export class HomePage {
   }[] = [];
 
   constructor (
-    public NavCtrl:NavController,
-    // HttpClientを読み込んでhttpという変数に入れる
-    public http: HttpClient,
+    public NavCtrl: NavController,
+    public wp: WordpressProvider,
     //記事を読み込んでいる間ローディング画面を表示する
     public loadingCtrl: LoadingController
   ){}
@@ -31,10 +32,8 @@ export class HomePage {
     // ionViewDidLoadm開始直後にローディング中。。。画面を表示
     let loading = this.loadingCtrl.create();
     loading.present();
-
-
-    this.http
-      .get('https://public-api.wordpress.com/rest/v1.1/sites/ionicjp.wordpress.com/posts/')
+    // provideから呼び出す
+    this.wp.getPosts()
       // subscribe:非同期処理を行う
       // 取得したデータをここで利用
       .subscribe(data => {
