@@ -9,7 +9,11 @@
 <ion-content padding>
   <ion-list>
     <!-- 繰り返し -->
-    <ion-item *ngFor="let p of posts">
+    <!-- [navPush]="ページ名"で<a>のように別ページへ遷移させる　
+      ArticlePageはLazy Loadingにするので文字列に 
+      push先にデータを受け渡す為navParamsでパラメータを受け渡す　ここではidというキーで p.IDを渡す-->
+    <ion-item *ngFor="let p of posts" [navPush] = "'ArticlePage'"
+               [navParams] = "{ id: p.ID}">
         <h2>{{p.title}}</h2>
         <p>{{p.date}}</p>
     </ion-item>
