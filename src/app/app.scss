@@ -1,7 +1,20 @@
 // http://ionicframework.com/docs/theming/
 
+[padding]h1:first-child,
+[padding]h2:first-child,
+[padding]h3:first-child,
+[padding]h4:first-child,
+[padding]h5:first-child,
+[padding]h6:first-child{
+    margin-top:0;
+    }
 
-// App Global Sass
+    // 折り返しをなくす
+ion-label{
+    white-space: normal;
+    }
+
+    // App Global Sass
 // --------------------------------------------------
 // Put style rules here that you want to apply globally. These
 // styles are for the entire app and not just one component.

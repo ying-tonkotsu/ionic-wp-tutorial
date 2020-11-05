@@ -1,14 +1,17 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      記事一覧
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v3">docs</a> will be your guide.
-  </p>
+  <ion-list>
+    <!-- 繰り返し -->
+    <ion-item *ngFor="let p of posts">
+        <h2>{{p.title}}</h2>
+        <p>{{p.date}}</p>
+    </ion-item>
+  </ion-list>
 </ion-content>
