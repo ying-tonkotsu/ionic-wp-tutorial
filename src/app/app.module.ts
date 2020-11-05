@@ -10,7 +10,7 @@ import { HomePage } from '../pages/home/home';
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    // Lazy Lodingで呼び出すものはここに載せない！
   ],
   imports: [
     BrowserModule,
@@ -19,7 +19,6 @@ import { HomePage } from '../pages/home/home';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
   ],
   providers: [
     StatusBar,
