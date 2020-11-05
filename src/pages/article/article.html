@@ -6,10 +6,15 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>article</ion-title>
+    <ion-title>記事詳細</ion-title>
   </ion-navbar>
 </ion-header>
 
+<!-- 記事情報を呼び出す -->
 <ion-content padding>
-
+<ion-item>
+  <h2>{{post.title}}</h2>
+  <p>{{post.date}}</p>
+</ion-item>
+<div padding>{{post.content}}</div>
 </ion-content>
