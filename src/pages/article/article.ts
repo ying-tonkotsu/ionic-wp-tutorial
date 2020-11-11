@@ -25,6 +25,7 @@ export class ArticlePage {
     content: null,
     date: null
   };
+  // オブジェクトなのでそのまま
 
 
   constructor(
