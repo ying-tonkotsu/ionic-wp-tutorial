@@ -3,7 +3,7 @@ import { IonicPage, NavController, LoadingController } from 'ionic-angular';
 
 // プロバイダーとつなげる
 import { WordpressProvider } from '../../providers/wordpress/wordpress';
-
+import { Post } from '../../interfaces/wordpress';
 @IonicPage()
 @Component({
   selector: 'page-home',
@@ -12,14 +12,9 @@ import { WordpressProvider } from '../../providers/wordpress/wordpress';
   providers: [ WordpressProvider ]
 })
 export class HomePage {
-  // 返り値を格納するためのプロパティPostsの型定義
-  // [] = 初期値
-  posts:{
-    ID: number,
-    title: string,
-    content: string,
-    date: string
-  }[] = [];
+  // 型Postから取得
+  // [] = 初期値　配列なので必要
+  posts: Post[] = []
 
   constructor (
     public NavCtrl: NavController,
