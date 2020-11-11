@@ -46,10 +46,11 @@ export class ArticlePage {
   }
 
   ionViewDidLoad() {
+    const id =  this.navParams.get('id');
+
     let loading = this.loadingCtrl.create();
     loading.present();
 
-    const id =  this.navParams.get('id');
     // 返り値の型を事前に指定（APIのレスポンスと一致させる為）
     // provideから呼び出し
     this.wp.getArticle(id)
@@ -58,5 +59,6 @@ export class ArticlePage {
         loading.dismiss();
       });
   }
+  // HTTP通信の処理をProviderに移した
 }
 
